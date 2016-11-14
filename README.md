@@ -1,4 +1,4 @@
-# npm-github-benchmark
+# npm-git-benchmark
 
 Bash script for comparing performance of the npm CLI on registry and git deps
 
@@ -8,11 +8,11 @@ Bash script for comparing performance of the npm CLI on registry and git deps
 ./benchmark.sh
 ```
 
-By default it will run twice each installation, use `-n` to change the number of iterations.
+By default it will run each installation three times, use `-n` to change the number of iterations.
 
 ```
 ./benchmark.sh -n 10
 ```
 
-The test is run by installing angular2, ember and react N times. Each series is run twice, the
-first time cleaning the cache in every run and the second one using the cache.
+This test runs npm install, with and without cache, for both angular2 and express, first using
+dependencies from the npm registry, then using dependencies from git.
