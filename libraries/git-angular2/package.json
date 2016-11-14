@@ -1,0 +1,25 @@
+{
+  "name": "generator-angular2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "gulp",
+    "start": "gulp dev"
+  },
+  "dependencies": {
+    "angular2": "https://github.com/angular/angular.git",
+    "traceur": "https://github.com/google/traceur-compiler.git",
+    "es6-promise": "https://github.com/stefanpenner/es6-promise.git",
+    "es6-shim": "https://github.com/paulmillr/es6-shim.git",
+    "rxjs": "https://github.com/ReactiveX/rxjs.git",
+    "zone.js": "https://github.com/angular/zone.js.git",
+    "reflect-metadata": "https://github.com/rbuckton/ReflectDecorators.git",
+    "systemjs": "https://github.com/systemjs/systemjs.git"
+  },
+  "devDependencies": {
+    "gulp": "https://github.com/gulpjs/gulp.git",
+    "gulp-rename": "https://github.com/hparra/gulp-rename.git",
+    "gulp-traceur": "https://github.com/sindresorhus/gulp-traceur.git",
+    "gulp-webserver": "https://github.com/schickling/gulp-webserver.git"
+  }
+}

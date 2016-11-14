@@ -1,0 +1,44 @@
+{
+  "name": "my-awesome-app",
+  "version": "0.0.0",
+  "description": "Small description for my-awesome-app goes here",
+  "private": true,
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "ember build",
+    "start": "ember server",
+    "test": "ember test"
+  },
+  "repository": "",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-asset-rev": "https://github.com/rickharrison/broccoli-asset-rev.git",
+    "ember-ajax": "https://github.com/ember-cli/ember-ajax.git",
+    "ember-cli": "https://github.com/ember-cli/ember-cli.git",
+    "ember-cli-app-version": "https://github.com/EmberSherpa/ember-cli-app-version.git",
+    "ember-cli-babel": "https://github.com/babel/ember-cli-babel.git",
+    "ember-cli-dependency-checker": "https://github.com/quaertym/ember-cli-dependency-checker.git",
+    "ember-cli-htmlbars": "https://github.com/ember-cli/ember-cli-htmlbars.git",
+    "ember-cli-htmlbars-inline-precompile": "https://github.com/ember-cli/ember-cli-htmlbars-inline-precompile.git",
+    "ember-cli-inject-live-reload": "https://github.com/ember-cli/ember-cli-inject-live-reload.git",
+    "ember-cli-jshint": "https://github.com/ember-cli/ember-cli-jshint.git",
+    "ember-cli-qunit": "https://github.com/ember-cli/ember-cli-qunit.git",
+    "ember-cli-release": "https://github.com/lytics/ember-cli-release.git",
+    "ember-cli-sri": "https://github.com/jonathanKingston/ember-cli-sri.git",
+    "ember-cli-test-loader": "https://github.com/ember-cli/ember-cli-test-loader.git",
+    "ember-cli-uglify": "https://github.com/ember-cli/ember-cli-uglify.git",
+    "ember-data": "https://github.com/emberjs/data.git",
+    "ember-export-application-global": "https://github.com/ember-cli/ember-export-application-global.git",
+    "ember-load-initializers": "https://github.com/ember-cli/ember-load-initializers.git",
+    "ember-resolver": "https://github.com/ember-cli/ember-resolver.git",
+    "ember-welcome-page": "https://github.com/ember-cli/ember-welcome-page.git",
+    "loader.js": "https://github.com/ember-cli/loader.js.git"
+  }
+}
