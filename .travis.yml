@@ -3,7 +3,7 @@ node_js:
   - "6"
   - "4"
 before_install:
+  - "npm install npm@latest -g"
   - "sudo apt-get install -yqq time"
-  - "npm install -g yarn"
 install: true
 script: ./benchmark.sh
