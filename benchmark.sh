@@ -53,7 +53,6 @@ run_benchmark() {
     clean_cache=$1
     library=$2
     directory="${base_dir}/libraries/${library}/"
-    node_modules="${base_dir}/libraries/${library}/node_modules"
     output_file="${output_folder}/${clean_cache}_${library}.csv"
     avg_file="${output_folder}/avg_${clean_cache}.csv"
 
@@ -62,13 +61,15 @@ run_benchmark() {
     command_to_run='npm install --cache-min 999999'
     command_to_clear_cache='npm cache clean'
 
+    cd $directory
+
     if [ $clean_cache = 1 ]; then
         cache_text='with clean cache'
     else
         cache_text=''
 
         # Install once to generate cache
-        rm -rf $node_modules
+        rm -rf node_modules
         $command_to_run > /dev/null 2>&1
     fi
 
@@ -100,6 +101,8 @@ run_benchmark() {
 
     avg=$(awk '{ total += $1; count++ } END { print total/count }' $output_file)
     echo -n $avg' ' >> $avg_file
+
+    cd $base_dir
 }
 
 show_results() {
