@@ -4,7 +4,7 @@
 
 repeats=3
 output_folder='reports'
-libraries=('angular2' 'git-angular2' 'ember' 'git-ember')
+libraries=('angular2' 'git-angular2' 'express' 'git-express')
 base_dir=$PWD
 
 # Option parsing
