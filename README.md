@@ -1,6 +1,17 @@
 # npm-git-benchmark
 > Bash script for comparing performance of the npm CLI on registry and git deps
 
+npm is a package manager for many (mostly web dev-y, javascript-y) things, which is
+to say, that npm is a collection of humans and software that make the publishing and
+usage of things called "packages" easier for other humans and software.
+
+Part of the software that npm consists of is a registry, which is where a lot of the
+packages that npm users install live- 370,000+, in fact- but this is not where all of 
+them live.
+
+As part of npm's commitment to open source, npm has always allowed user to set up
+alternative regsitries.
+
 This script runs a benchmark on the length of time an `npm install` takes depending
 on whether the primary dependencies are git dependencies (fetched from GitHub) or
 npm dependencies (fetched from the npm registry). For added comparison, it also runs
