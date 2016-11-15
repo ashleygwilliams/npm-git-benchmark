@@ -12,7 +12,7 @@ The goal of this benchmark was to motivate users to use the npm registry for the
 packages, and in particular, to note the performance cost of using private git repos
 instead of private npm packages.
 
-As of 14 November 2015, these were the results, as run on TravisCI, using `Node 4.6.2`
+As of 14 November 2016, these were the results, as run on TravisCI, using `Node 4.6.2`
 and `npm 3.10.9`:
 
 ### Speed
