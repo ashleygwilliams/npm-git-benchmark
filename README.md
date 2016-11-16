@@ -190,3 +190,7 @@ If you're currently using private `git` repos as dependencies in your applicatio
 encourage you to take a look at npm's private packages and orgs products- in addition to making
 your team more productive, you'll be supporting the open source npm ecosystem and the
 javascript community- and who doesn't like doing that?
+
+Oh, and if you aren't a fan of warm fuzzies- how about never having to worry about this again?
+
+![tweet about github being down]()
