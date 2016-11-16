@@ -10,7 +10,40 @@ packages that npm users install live- 370,000+, in fact- but this is not where a
 them live.
 
 As part of npm's commitment to open source, npm has always allowed user to set up
-alternative regsitries.
+alternative regsitries to publish packages to and install packages from. This is 
+partly how npmE, npm's enterprise product, works- however there are many more 
+examples of alternative registries out in the wild.
+
+## `git` Dependencies
+
+In addition to the option to use alternative registries, npm also supports using a
+`git` address to point to packages stored on version control hosting, such as GitHub.
+You can use this functionality alongside the npm registry (or another registry of your
+choosing). For example, you could have a `package.json` that looks like this:
+
+```json
+{
+  "name": "my-awesome-app",
+  "version": "3.0.0",
+  "description": "there's an app for that- and this is it!",
+  "main": "index.js",
+  "author": "ag_dubs <ashley@npmjs.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "my-secret-auth-package": "git@github.com:ashleygwilliams/my-secret-auth-package.git"
+  }
+}
+```
+
+If you and your company are already using GitHub, or something like it, for version
+control, it might occur to you that using it as your package registry would be a 
+simple solution- particularly if you are already paying GitHub for private repositories!
+No one likes paying twice for a single piece of functionality!
+
+## npm is more than the CLI
+
+## `git` vs npm Registry Showdown!
 
 This script runs a benchmark on the length of time an `npm install` takes depending
 on whether the primary dependencies are git dependencies (fetched from GitHub) or
