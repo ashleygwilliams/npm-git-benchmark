@@ -49,7 +49,10 @@ here's a quick rundown:
 - the npm Registry only installs the files you need, and therefore uses less disk space
 - the npm Registry allows you to easily take advantage of semantic versioning
 
-## npm is more than the CLI
+## The Right Tool For the Job
+
+> npm would be a terrible version control service.
+> - C.J. Silvero, CTO, npm, Inc
 
 Remember how I described npm as a collection of software and humans earlier? This was a 
 deliberately strange move on my part. This is primarily because many people do not realize
@@ -65,14 +68,25 @@ grown and changed, specifically for the purposes of improving uptime and perform
 Last year the npm registry served X downloads, grew to contain X packages, X users, and had
 a downtime of X%.
 
-## The Right Tool For the Job
-
-> npm would be a terrible version control service.
-> - C.J. Silvero, CTO, npm, Inc 
-
 ## `git` vs npm Registry Showdown!
 
-This script runs a benchmark on the length of time an `npm install` takes depending
+There's no question that npm is specifically designed to serve all the uses a package
+manager could need- but GitHub is a version control and collaboration product! Many of us
+know and love it, but it *isn't* designed to be a package manager. How much of a
+difference do those differing product goals make? I decided to write a test to see
+exactly what that difference was.
+
+I took two common and popular frameworks, `express` and `angular2`, copied their
+`package.json`s, and then made a version for each where I replaced all the primary
+dependencies with `git` URLs. Then I wrote a shell script which timed the following
+sitations using the `time` utility:
+
+- `npm install` with no cache (`npm cache clear`) on dependecies fetched from the npm registry
+- `npm install --cache-min 999999` (using the cache) on dependencies fetched from the npm registry
+- `npm install` cache-min` with no cache (`npm cache clear`) on depedencies fetched from GitHub
+- `npm install --cache-min 999999` (using the cache) on depdnecies fetched from Github 
+
+In summary, this script runs a benchmark on the length of time an `npm install` takes depending
 on whether the primary dependencies are git dependencies (fetched from GitHub) or
 npm dependencies (fetched from the npm registry). For added comparison, it also runs
 tests to see the effect caching has on both scenarios.
