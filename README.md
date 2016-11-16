@@ -36,19 +36,6 @@ choosing). For example, you could have a `package.json` that looks like this:
 }
 ```
 
-Looking at the above example, you might be quick to note that using a `git` dependency means
-that you need to replace the semver range indication for that dependency. One of the main
-drawbacks to using a `git` dependency is that you cannot leverage semantic versioning. If you
-use a `git` dependency you can pin to a commit or a branch, but you can't use the language
-of semver to describe that decision. One of the drawbacks is that it's much harder for you
-and other devs to communicate and understand the version of that dependency your application
-needs. It also means that things like patch or minor release updates to that dependency won't
-be automatically brought into your application, the way a dependency that was specified as 
-`^X.0.0` in your `package.json` (the default) might. In the end, using a `git` url to specify
-a dependency instead of a language specifically designed to do it will likely make your
-team less productive.
-
-
 If you and your company are already using GitHub, or something like it, for version
 control, it might occur to you that using it as your package registry would be a 
 simple solution- particularly if you are already paying GitHub for private repositories!
