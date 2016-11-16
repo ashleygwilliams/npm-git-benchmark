@@ -123,8 +123,6 @@ instead of private npm packages.
 As of 14 November 2016, these were the results, as run on TravisCI, using `Node 4.6.2`
 and `npm 3.10.9`:
 
-### Speed
-
 ```
 ----------------------------------- RESULTS (seconds) ----------------------------------
 ---------------------------------------------------------------------------------------- 
@@ -147,12 +145,14 @@ Because npm is designed to be a package manager, it allows package publishers th
 to control the files that are contained in their packages- much the way a `.gitignore` file
 allows developers to control what files are tracked by version control. Many package authors
 choose to not include supporting files like tests, documentation, and example code in the
-pubished packages to reduce the space cost (and sometimes the network cost!) for application
-writers using their packages.
+pubished packages- although they almost certainly include them in the version control for
+the package's source.
 
 This is a less well-known feature of npm, and I wasn't sure how widespread it's usage was- so
 after running the speed benchmark, I was curious if I would see a difference in `node_modules`
 disk usage between applications using `git` vs npm dependencies.
+
+#### Results
 
 Using `Node 4.6.2` and `npm 3.10.9` on OSX, I npm installed and ran `du` on the `node_modules`
 directory for each library.
@@ -168,16 +168,25 @@ directory for each library.
 The numbers above really speak for themselves- `git` dependencies use significantly more disk
 space than npm dependencies do.
 
-# Try it Yourself
+## Conclusion
 
-## Prerequisites
+So- what to conclude from all of this?
 
-This script requires a true Linux. Any Linux seems to be fine, but notably it
-fails on OS X.
+Firstly- if you didn't know that you could use `git` dependencies with npm, now you do! There
+are plenty of good reasons to use `git` dependencies, and npm is commited to not only ensuring
+that the CLI always supports them, but also to continuously improving the performance of 
+installing them.
 
-## Up and Running
+That being said- if your team is looking for improved performace and reduced disk usage, among
+other boons, you'll want to leverage the npm registry. In summary, the npm registry offers
+an improved performance over `git` dependencies because: 
 
-1. Fork and clone this repository.
-2. `cd npm-git-benchmark`
-3. `./benchmark.sh`
+- the npm Registry is specifically designed for serving packages
+- the npm Registry allows you to easily take advantage of semantic versioning
+- the npm Registry is faster than GitHub
+- the npm Registry only installs the files you need, and therefore uses less disk space
 
+If you're currently using private `git` repos as dependencies in your application, I'd strongly
+encourage you to take a look at npm's private packages and orgs products- in addition to making
+your team more productive, you'll be supporting the open source npm ecosystem and the
+javascript community- and who doesn't like doing that?
