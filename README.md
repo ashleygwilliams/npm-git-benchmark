@@ -39,9 +39,36 @@ choosing). For example, you could have a `package.json` that looks like this:
 If you and your company are already using GitHub, or something like it, for version
 control, it might occur to you that using it as your package registry would be a 
 simple solution- particularly if you are already paying GitHub for private repositories!
-No one likes paying twice for a single piece of functionality!
+
+A question we get at npm a lot is- why should I pay for private packages when I can simply
+use a private GitHub registry? The rest of this article aims to answer that question- but
+here's a quick rundown:
+
+- the npm Registry is specifically designed for serving packages
+- the npm Registry is faster than GitHub
+- the npm Registry only installs the files you need, and therefore uses less disk space
+- the npm Registry allows you to easily take advantage of semantic versioning
 
 ## npm is more than the CLI
+
+Remember how I described npm as a collection of software and humans earlier? This was a 
+deliberately strange move on my part. This is primarily because many people do not realize
+that npm extends beyond the CLI tool you use to type `npm install` into your terminal.
+npm is a company- with lots of people, working on lots of different things! The npm CLI is
+just one product among many.
+
+In fact, the main product at npm is the npm Registry- a very large and semi-elaborate set
+of services that enable both the CLI client and the website to function. Long ago, the npm
+Registry used to be a simple CouchApp built on top of CouchDB- but over the years, it has
+grown and changed, specifically for the purposes of improving uptime and performance.
+
+Last year the npm registry served X downloads, grew to contain X packages, X users, and had
+a downtime of X%.
+
+## The Right Tool For the Job
+
+> npm would be a terrible version control service.
+> - C.J. Silvero, CTO, npm, Inc 
 
 ## `git` vs npm Registry Showdown!
 
