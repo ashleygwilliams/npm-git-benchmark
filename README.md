@@ -36,6 +36,19 @@ choosing). For example, you could have a `package.json` that looks like this:
 }
 ```
 
+Looking at the above example, you might be quick to note that using a `git` dependency means
+that you need to replace the semver range indication for that dependency. One of the main
+drawbacks to using a `git` dependency is that you cannot leverage semantic versioning. If you
+use a `git` dependency you can pin to a commit or a branch, but you can't use the language
+of semver to describe that decision. One of the drawbacks is that it's much harder for you
+and other devs to communicate and understand the version of that dependency your application
+needs. It also means that things like patch or minor release updates to that dependency won't
+be automatically brought into your application, the way a dependency that was specified as 
+`^X.0.0` in your `package.json` (the default) might. In the end, using a `git` url to specify
+a dependency instead of a language specifically designed to do it will likely make your
+team less productive.
+
+
 If you and your company are already using GitHub, or something like it, for version
 control, it might occur to you that using it as your package registry would be a 
 simple solution- particularly if you are already paying GitHub for private repositories!
@@ -45,9 +58,9 @@ use a private GitHub registry? The rest of this article aims to answer that ques
 here's a quick rundown:
 
 - the npm Registry is specifically designed for serving packages
+- the npm Registry allows you to easily take advantage of semantic versioning
 - the npm Registry is faster than GitHub
 - the npm Registry only installs the files you need, and therefore uses less disk space
-- the npm Registry allows you to easily take advantage of semantic versioning
 
 ## The Right Tool For the Job
 
@@ -73,8 +86,31 @@ a downtime of X%.
 There's no question that npm is specifically designed to serve all the uses a package
 manager could need- but GitHub is a version control and collaboration product! Many of us
 know and love it, but it *isn't* designed to be a package manager. How much of a
-difference do those differing product goals make? I decided to write a test to see
-exactly what that difference was.
+difference do those differing product goals make? 
+
+### Semantic Versioning
+
+Looking at the above example, you might be quick to note that using a `git` dependency means
+that you need to replace the semver range indication for that dependency. One of the main
+drawbacks to using a `git` dependency is that you cannot leverage semantic versioning. If you
+use a `git` dependency you can pin to a commit or a branch, but you can't use the language
+of semver to describe that decision. One of the drawbacks is that it's much harder for you
+and other devs to communicate and understand the version of that dependency your application
+needs. It also means that things like patch or minor release updates to that dependency won't
+be automatically brought into your application, the way a dependency that was specified as
+`^X.0.0` in your `package.json` (the default) might. In the end, using a `git` url to specify
+a dependency instead of a language specifically designed to do it will likely make your
+team less productive.
+
+### `npm install` Performance
+
+Now, it's true that not everyone loves semantic versioning- it's a complicated and often
+imperfect system, so the loss of that feature is not a deal breaker for everyone. Assuming
+you were willing to forego semantic versioning, my next question was: given that the npm
+registry is *designed* for installs, what is the difference in performance between installing
+`git` vs npm dependencies.
+
+I decided to write a test to see exactly what that difference was.
 
 I took two common and popular frameworks, `express` and `angular2`, copied their
 `package.json`s, and then made a version for each where I replaced all the primary
@@ -91,7 +127,7 @@ on whether the primary dependencies are git dependencies (fetched from GitHub) o
 npm dependencies (fetched from the npm registry). For added comparison, it also runs
 tests to see the effect caching has on both scenarios.
 
-## Results
+#### Results
 
 The goal of this benchmark was to motivate users to use the npm registry for their
 packages, and in particular, to note the performance cost of using private git repos
@@ -111,7 +147,25 @@ and `npm 3.10.9`:
 ----------------------------------------------------------------------------------------
 ```
 
-### Size
+As you can see, applications using npm depdendencies were *much* faster than those using
+`git` dependencies. In addition, caching is *much more* effective on npm dependencies
+than `git` dependencies.
+
+### `node_modules` Disk Usage
+
+Speed is not the only factor when installing dependencies. If you've ever taken a gander at
+your `node_modules` directory- you know there's a lot in there!
+
+Because npm is designed to be a package manager, it allows package publishers the ability
+to control the files that are contained in their packages- much the way a `.gitignore` file
+allows developers to control what files are tracked by version control. Many package authors
+choose to not include supporting files like tests, documentation, and example code in the
+pubished packages to reduce the space cost (and sometimes the network cost!) for application
+writers using their packages.
+
+This is a less well-known feature of npm, and I wasn't sure how widespread it's usage was- so
+after running the speed benchmark, I was curious if I would see a difference in `node_modules`
+disk usage between applications using `git` vs npm dependencies.
 
 Using `Node 4.6.2` and `npm 3.10.9` on OSX, I npm installed and ran `du` on the `node_modules`
 directory for each library.
@@ -123,6 +177,9 @@ directory for each library.
 |       132440 |       833776 |        36872 |        43816 |
 -------------------------------------------------------------
 ```
+
+The numbers above really speak for themselves- `git` dependencies use significantly more disk
+space than npm dependencies do.
 
 # Try it Yourself
 
