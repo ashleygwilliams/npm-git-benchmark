@@ -65,8 +65,19 @@ of services that enable both the CLI client and the website to function. Long ag
 Registry used to be a simple CouchApp built on top of CouchDB- but over the years, it has
 grown and changed, specifically for the purposes of improving uptime and performance.
 
-Last year the npm registry served X downloads, grew to contain X packages, X users, and had
-a downtime of X%.
+Even just a brief glance at some of the data around the activity on registry reveals
+pretty awesome numbers. If you compare numbers from November 1, 2015 to 2016- you'd watch
+the rolling weekly downloads count jump from 18B to 52B, so roughly 300% growth! And if you
+think that number is big, jsut go back one more year to 2014, when there were only 3.4B
+rolling weekly downloads. I'll do the math for you- that's 1500% growth over just 2 years!
+
+![downloads](assets/downloads.png)
+
+A growth in scale can often threaten the uptime of a service, but on that metric, the npm
+registry has really shown. Current uptime rounds up to 100%!
+
+If you want to checkout the uptime on our services, take a look at http://ping.npmjs.com/.
+(And for status issues- always check out http://status.npmjs.com).
 
 ## `git` vs npm Registry Showdown!
 
