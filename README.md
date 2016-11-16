@@ -193,4 +193,4 @@ javascript community- and who doesn't like doing that?
 
 Oh, and if you aren't a fan of warm fuzzies- how about never having to worry about this again?
 
-![tweet about github being down]()
+![tweet about github being down](assets/tweet.png)
