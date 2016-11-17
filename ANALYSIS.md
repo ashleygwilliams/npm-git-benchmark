@@ -11,8 +11,8 @@ them live.
 
 As part of npm's commitment to open source, npm has always allowed users to set up
 alternative registries to publish packages to and install packages from. This is 
-partly how [npmE](https://www.npmjs.com/enterprise), npm's enterprise product, works
-- and there are many more examples of alternative registries out in the wild.
+partly how [npmE](https://www.npmjs.com/enterprise), npm's enterprise product, works-
+and there are many more examples of alternative registries out in the wild.
 
 ## `git` Dependencies
 
