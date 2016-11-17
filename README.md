@@ -17,6 +17,10 @@ on whether the primary dependencies are git dependencies (fetched from GitHub) o
 npm dependencies (fetched from the npm registry). For added comparison, it also runs
 tests to see the effect caching has on both scenarios.
 
+## Background and Results
+
+For more background and results, please see [ANALYSIS.md](ANALYSIS.md).
+
 ## Up and Running
 
 This is a bash script that runs on most Linux distros. You'll need a Linux of some type to
