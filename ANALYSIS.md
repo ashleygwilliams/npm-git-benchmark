@@ -1,5 +1,4 @@
-# npm-git-benchmark
-> Bash script for comparing performance of the npm CLI on registry and git deps
+# Registry or repository - the right tool for the job
 
 npm is a package manager for many (mostly web dev-y, javascript-y) things, which is
 to say, that npm is a collection of humans and software that make the publishing and
@@ -9,7 +8,7 @@ Part of the software that npm consists of is a registry, which is where a lot of
 packages that npm users install live- 370,000+, in fact- but this is not where all of 
 them live.
 
-As part of npm's commitment to open source, npm has always allowed user to set up
+As part of npm's commitment to open source, npm has always allowed users to set up
 alternative registries to publish packages to and install packages from. This is 
 partly how npmE, npm's enterprise product, works- and there are many more 
 examples of alternative registries out in the wild.
@@ -69,7 +68,7 @@ it has grown and changed, specifically for the purposes of improving uptime and 
 Even just a brief glance at some of the data around the activity on registry reveals
 pretty awesome numbers. If you compare numbers from November 1, 2015 to 2016- you'd watch
 the rolling 365-day downloads count jump from 18B to 52B, so roughly 300% growth! And if you
-think that number is big, jsut go back one more year to 2014, when there were only 3.4B
+think that number is big, just go back one more year to 2014, when there were only 3.4B
 rolling weekly downloads. I'll do the math for you- that's 1500% growth over just 2 years!
 
 ![downloads](assets/downloads.png)
