@@ -130,8 +130,6 @@ on whether the primary dependencies are git dependencies (fetched from GitHub) o
 npm dependencies (fetched from the npm registry). For added comparison, it also runs
 tests to see the effect caching has on both scenarios.
 
-#### Results
-
 The goal of this benchmark was to motivate users to use the npm registry for their
 packages, and in particular, to note the performance cost of using private git repos
 instead of private npm packages.
@@ -139,14 +137,14 @@ instead of private npm packages.
 As of 14 November 2016, these were the results, as run on TravisCI, using `Node 4.6.2`
 and `npm 3.10.9`:
 
-```
------------------------------------ RESULTS (seconds) ----------------------------------
----------------------------------------------------------------------------------------- 
-|                          |     angular2 | git-angular2 |      express |  git-express | 
-|        _with_empty_cache |       18.267 |      135.720 |       10.100 |       28.067 | 
-|         _with_all_cached |       13.640 |      112.033 |        7.273 |       17.243 | 
-----------------------------------------------------------------------------------------
-```
+#### Install Time Results (seconds)
+
+|                      | angular2 | express |
+|----------------------|----------|---------|
+| git with empty cache | 135.720  | 28.067  |
+| git with all cached  | 112.033  | 17.243  |
+| npm with empty cache | 18.267   | 10.100  |
+| npm with all cached  | 13.640   | 7.273   |
 
 As you can see, applications using npm depdendencies were *much* faster than those using
 `git` dependencies. In addition, caching is *much more* effective on npm dependencies
@@ -168,18 +166,15 @@ This is a less well-known feature of npm, and I wasn't sure how widespread it's 
 after running the speed benchmark, I was curious if I would see a difference in `node_modules`
 disk usage between applications using `git` vs npm dependencies.
 
-#### Results
-
 Using `Node 4.6.2` and `npm 3.10.9` on OSX, I npm installed and ran `du` on the `node_modules`
 directory for each library.
 
-```
----------------------- RESULTS (bytes) ----------------------
--------------------------------------------------------------
-|     angular2 | git-angular2 |      express |  git-express |
-|       132440 |       833776 |        36872 |        43816 |
--------------------------------------------------------------
-```
+#### Disk Usage Results (bytes)
+
+|                  | angular2 | express |
+|------------------|----------|---------|
+| git dependencies | 833776   | 43816   |
+| npm dependencies | 132440   | 36872   |
 
 The numbers above really speak for themselves- `git` dependencies use significantly more disk
 space than npm dependencies do.
