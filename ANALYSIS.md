@@ -10,16 +10,17 @@ packages that npm users install live- 370,000+, in fact- but this is not where a
 them live.
 
 As part of npm's commitment to open source, npm has always allowed user to set up
-alternative regsitries to publish packages to and install packages from. This is 
-partly how npmE, npm's enterprise product, works- however there are many more 
+alternative registries to publish packages to and install packages from. This is 
+partly how npmE, npm's enterprise product, works- and there are many more 
 examples of alternative registries out in the wild.
 
 ## `git` Dependencies
 
 In addition to the option to use alternative registries, npm also supports using a
-`git` address to point to packages stored on version control hosting, such as GitHub.
-You can use this functionality alongside the npm registry (or another registry of your
-choosing). For example, you could have a `package.json` that looks like this:
+`git` address to point to packages stored on version control hosting, such as GitHub,
+BitBucket, or GitLab. You can use this functionality alongside the npm registry (or
+another registry of your choosing). For example, you could have a `package.json` that
+looks like this:
 
 ```json
 {
@@ -62,19 +63,19 @@ just one product among many.
 
 In fact, the main product at npm is the npm Registry- a very large and semi-elaborate set
 of services that enable both the CLI client and the website to function. Long ago, the npm
-Registry used to be a simple CouchApp built on top of CouchDB- but over the years, it has
-grown and changed, specifically for the purposes of improving uptime and performance.
+Registry used to be a simple Couch application built on top of CouchDB- but over the years,
+it has grown and changed, specifically for the purposes of improving uptime and performance.
 
 Even just a brief glance at some of the data around the activity on registry reveals
 pretty awesome numbers. If you compare numbers from November 1, 2015 to 2016- you'd watch
-the rolling weekly downloads count jump from 18B to 52B, so roughly 300% growth! And if you
+the rolling 365-day downloads count jump from 18B to 52B, so roughly 300% growth! And if you
 think that number is big, jsut go back one more year to 2014, when there were only 3.4B
 rolling weekly downloads. I'll do the math for you- that's 1500% growth over just 2 years!
 
 ![downloads](assets/downloads.png)
 
 A growth in scale can often threaten the uptime of a service, but on that metric, the npm
-registry has really shown. Current uptime rounds up to 100%!
+registry has really shone. Current uptime is better than 99.95%!
 
 If you want to checkout the uptime on our services, take a look at http://ping.npmjs.com/.
 (And for status issues- always check out http://status.npmjs.com).
@@ -117,7 +118,7 @@ sitations using the `time` utility:
 
 - `npm install` with no cache (`npm cache clear`) on dependecies fetched from the npm registry
 - `npm install --cache-min 999999` (using the cache) on dependencies fetched from the npm registry
-- `npm install` cache-min` with no cache (`npm cache clear`) on depedencies fetched from GitHub
+- `npm install cache-min` with no cache (`npm cache clear`) on depedencies fetched from GitHub
 - `npm install --cache-min 999999` (using the cache) on depdnecies fetched from Github 
 
 In summary, this script runs a benchmark on the length of time an `npm install` takes depending
@@ -201,7 +202,3 @@ If you're currently using private `git` repos as dependencies in your applicatio
 encourage you to take a look at npm's private packages and orgs products- in addition to making
 your team more productive, you'll be supporting the open source npm ecosystem and the
 javascript community- and who doesn't like doing that?
-
-Oh, and if you aren't a fan of warm fuzzies- how about never having to worry about this again?
-
-![tweet about github being down](assets/tweet.png)
