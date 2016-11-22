@@ -7,19 +7,19 @@
     "start": "gulp dev"
   },
   "dependencies": {
-    "angular2": "https://github.com/angular/angular.git",
-    "traceur": "https://github.com/google/traceur-compiler.git",
-    "es6-promise": "https://github.com/stefanpenner/es6-promise.git",
-    "es6-shim": "https://github.com/paulmillr/es6-shim.git",
-    "rxjs": "https://github.com/ReactiveX/rxjs.git",
-    "zone.js": "https://github.com/angular/zone.js.git",
-    "reflect-metadata": "https://github.com/rbuckton/ReflectDecorators.git",
-    "systemjs": "https://github.com/systemjs/systemjs.git"
+    "angular2": "https://github.com/angular/angular.git#2.0.0-beta.2",
+    "traceur": "https://github.com/google/traceur-compiler.git#0.0.102",
+    "es6-promise": "https://github.com/stefanpenner/es6-promise.git#v3.0.2",
+    "es6-shim": "https://github.com/paulmillr/es6-shim.git#0.33.3",
+    "rxjs": "https://github.com/ReactiveX/rxjs.git#5.0.0-beta.0",
+    "zone.js": "https://github.com/angular/zone.js.git#v0.5.10",
+    "reflect-metadata": "https://github.com/rbuckton/ReflectDecorators.git#v0.1.1",
+    "systemjs": "https://github.com/systemjs/systemjs.git#0.19.6"
   },
   "devDependencies": {
-    "gulp": "https://github.com/gulpjs/gulp.git",
-    "gulp-rename": "https://github.com/hparra/gulp-rename.git",
-    "gulp-traceur": "https://github.com/sindresorhus/gulp-traceur.git",
-    "gulp-webserver": "https://github.com/schickling/gulp-webserver.git"
+    "gulp": "https://github.com/gulpjs/gulp.git#v3.9.0",
+    "gulp-rename": "https://github.com/hparra/gulp-rename.git#v1.2.2",
+    "gulp-traceur": "https://github.com/sindresorhus/gulp-traceur.git#v0.17.2",
+    "gulp-webserver": "https://github.com/schickling/gulp-webserver.git#0.9.1"
   }
 }
