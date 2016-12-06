@@ -82,6 +82,8 @@ registry has really shone. Current uptime is better than 99.95%!
 If you want to checkout the uptime on our services, take a look at http://ping.npmjs.com/.
 (And for status issues- always check out http://status.npmjs.com).
 
+[![ping](assets/reliable.png)](http://ping.npmjs.com/)
+
 ## `git` vs npm Registry Showdown!
 
 There's no question that npm is specifically designed to serve all the uses a package
