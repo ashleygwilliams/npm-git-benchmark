@@ -50,7 +50,6 @@ The rest of this article aims to answer that question- but here's a quick rundow
 - the npm Registry is specifically designed for serving packages
 - the npm Registry allows you to easily take advantage of semantic versioning
 - the npm Registry is faster than GitHub
-- the npm Registry only installs the files you need, and therefore uses less disk space
 
 ## The Right Tool For the Job
 
@@ -149,35 +148,6 @@ and `npm 3.10.9`:
 As you can see, applications using npm depdendencies were *much* faster than those using
 `git` dependencies. In addition, caching is *much more* effective on npm dependencies
 than `git` dependencies.
-
-### `node_modules` Disk Usage
-
-Speed is not the only factor when installing dependencies. If you've ever taken a gander at
-your `node_modules` directory- you know there's a lot in there!
-
-Because npm is designed to be a package manager, it allows package publishers the ability
-to control the files that are contained in their packages- much the way a `.gitignore` file
-allows developers to control what files are tracked by version control.  Many package authors
-choose to not include supporting files like tests, documentation, and example code in the
-pubished packages- although they almost certainly include them in the version control for
-the package's source.
-
-This is a less well-known feature of npm, and I wasn't sure how widespread it's usage was- so
-after running the speed benchmark, I was curious if I would see a difference in `node_modules`
-disk usage between applications using `git` vs npm dependencies.
-
-Using `Node 4.6.2` and `npm 3.10.9` on OSX, I npm installed and ran `du` on the `node_modules`
-directory for each library.
-
-#### Disk Usage Results (bytes)
-
-|                  | angular2 | express |
-|------------------|----------|---------|
-| git dependencies | 833776   | 43816   |
-| npm dependencies | 132440   | 36872   |
-
-The numbers above really speak for themselves- `git` dependencies use significantly more disk
-space than npm dependencies do.
 
 ## Conclusion
 
