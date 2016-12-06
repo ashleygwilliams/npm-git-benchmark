@@ -88,8 +88,8 @@ If you want to checkout the uptime on our services, take a look at http://ping.n
 
 There's no question that npm is specifically designed to serve all the uses a package
 manager could need- but GitHub is a version control and collaboration product! Many of us
-know and love it, but it *isn't* designed to be a package manager. How much of a
-difference do those differing product goals make? 
+know and love it, but it *isn't* designed to be a package manager. Do those differing
+product goals make a difference in feature set and performance? 
 
 ### Semantic Versioning
 
