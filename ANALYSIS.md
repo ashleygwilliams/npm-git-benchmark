@@ -135,21 +135,44 @@ The goal of this benchmark was to motivate users to use the npm registry for the
 packages, and in particular, to note the performance cost of using private git repos
 instead of private npm packages.
 
-As of 14 November 2016, these were the results, as run on TravisCI, using `Node 4.6.2`
-and `npm 3.10.9`:
+As of 6 December 2016, these were the results, as run on TravisCI, using `Node 4.6.2`
+and `npm 3.10.9` ([log file](https://api.travis-ci.org/jobs/181815771/log.txt?deansi=true)):
 
 #### Install Time Results (seconds)
 
 |                      | angular2 | express |
 |----------------------|----------|---------|
-| git with empty cache | 135.720  | 28.067  |
-| git with all cached  | 112.033  | 17.243  |
-| npm with empty cache | 18.267   | 10.100  |
-| npm with all cached  | 13.640   | 7.273   |
+| git with empty cache | 38.713  | 26.793  |
+| npm with empty cache | 17.973   | 10.033  |
+| git with all cached  | 29.228  | 16.223  |
+| npm with all cached  | 13.403   | 7.197   |
+
+### Faster, but by how much?
 
 As you can see, applications using npm depdendencies were *much* faster than those using
-`git` dependencies. In addition, caching is *much more* effective on npm dependencies
-than `git` dependencies.
+`git` dependencies. But **how much faster**?
+
+Let's calculate what percentage faster npm is compared to git using the following
+assignments and calculation:
+
+```
+Tgit = installation time for git dependencies
+Tnpm = installation time for npm dependencies
+
+(Tnpm/Tgit) - 1 = x
+
+... where x = the percentage (in decimal) that Tnpm is faster than Tgit
+```
+
+Applying this to the generated data we get
+
+|                      | angular2 | express |
+|----------------------|----------|---------|
+| empty cache |   53.574% | 62.554%  |
+| all cached  |   54.143% | 55.637% |
+
+If we average these we'll find that on average, **using npm dependencies is around 56.5%
+faster than using git dependencies**.
 
 ## Conclusion
 
@@ -160,14 +183,13 @@ are plenty of good reasons to use `git` dependencies, and npm is commited to not
 that the CLI always supports them, but also to continuously improving the performance of 
 installing them.
 
-That being said- if your team is looking for improved performace and reduced disk usage, among
+That being said- if your team is looking for improved performace and team communication, among
 other boons, you'll want to leverage the npm registry. In summary, the npm registry offers
 an improved performance over `git` dependencies because: 
 
 - the npm Registry is specifically designed for serving packages
 - the npm Registry allows you to easily take advantage of semantic versioning
 - the npm Registry is faster than GitHub
-- the npm Registry only installs the files you need, and therefore uses less disk space
 
 If you're currently using private `git` repos as dependencies in your application, I'd strongly
 encourage you to take a look at npm's private packages and orgs products- in addition to making
