@@ -1,59 +1,6 @@
-#!/bin/bash
-# Benchmark runner
-# Based on https://gist.github.com/peterjmit/3864743
-
-repeats=3
-output_folder='reports'
-libraries=('angular2' 'git-angular2' 'express' 'git-express')
-base_dir=$PWD
-
-# Option parsing
-while getopts n:o: OPT
-do
-    case "$OPT" in
-        n)
-            repeats=$OPTARG
-            ;;
-        o)
-            output_folder=$OPTARG
-            ;;
-        \?)
-            echo 'No arguments supplied'
-            exit 1
-            ;;
-    esac
-done
-
-shift `expr $OPTIND - 1`
-
-output_folder="${base_dir}/${output_folder}"
-
-mkdir -p $output_folder
-
-echo 'Benchmarking: GitHub vs NPM Registry'
-echo '===================================='
-echo 'Running' $repeats 'times per library, test results will be stored in' $output_folder 'directory'
-echo ''
-
-run_tests() {
-    avg_file_cc="${output_folder}/avg_1.csv"
-    avg_file="${output_folder}/avg_0.csv"
-    echo -n > $avg_file_cc
-    echo -n > $avg_file
-
-    for library in "${libraries[@]}"
-    do
-        echo $library '=>';
-        run_benchmark 1 $library # Cleaning cache
-        run_benchmark 0 $library # Without cleaning cache
-    done
-}
-
-run_benchmark() {
-    clean_cache=$1
-    library=$2
-    directory="${base_dir}/libraries/${library}/"
+dules="${base_dir}/libraries/${library}/node_modules"
     output_file="${output_folder}/${clean_cache}_${library}.csv"
+    size_file="${output_folder}/size_${clean_cache}_${library}.csv"
     avg_file="${output_folder}/avg_${clean_cache}.csv"
 
     echo -n > $output_file
@@ -71,6 +18,8 @@ run_benchmark() {
         # Install once to generate cache
         rm -rf node_modules
         $command_to_run > /dev/null 2>&1
+        dir_size=$(du -hs $node_modules)
+        $dir_size >> $size_file
     fi
 
     echo '    '${tool} ${cache_text}
@@ -117,6 +66,8 @@ show_results() {
     echo >> $all_file
     echo -n '_with_all_cached ' >> $all_file
     cat $avg_file >> $all_file
+    echo >> $all_file
+    cat $size_file >> $all_file
     echo >> $all_file
 
     echo ''
